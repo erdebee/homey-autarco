@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    Homey.setTitle('Select Autarco Inverter');
+    Homey.showLoadingOverlay();
+  
+    Homey.emit('list_devices')
+      .then(function(devices) {
+        Homey.hideLoadingOverlay();
+        Homey.setNavigationClose();
+        Homey.showView('login');
+      })
+      .catch(function(error) {
+        Homey.hideLoadingOverlay();
+        Homey.alert(error);
+      });
+  </script>

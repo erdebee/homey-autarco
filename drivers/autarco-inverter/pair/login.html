@@ -1,0 +1,49 @@
+<form id="login-form">
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="username">Username</label>
+      <input class="homey-form-input" id="username" type="text" placeholder="Enter your Autarco username" />
+    </div>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="password">Password</label>
+      <input class="homey-form-input" id="password" type="password" placeholder="Enter your Autarco password" />
+    </div>
+    <button class="homey-button-primary" id="login">Login</button>
+  </form>
+
+  <p id="error-message" style="display: none; color: red;"></p>
+
+  <script type="text/javascript">
+    Homey.setTitle('Login to Autarco');
+    
+    const loginForm = document.getElementById('login-form');
+    const siteSelection = document.getElementById('site-selection');
+    const siteList = document.getElementById('site-list');
+    const errorMessage = document.getElementById('error-message');
+    
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      Homey.emit('login', { username, password })
+        .then(function(result) {
+          if (result.success) {
+            
+           // Use the built-in list_devices functionality
+            Homey.showView('list_devices');
+          } else {
+            showError('Login failed: ' + result.error);
+          }
+        })
+        .catch(function(error) {
+          showError(error);
+        });
+    });
+
+   
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+    }
+  </script>

@@ -1,0 +1,68 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.pulsive.autarco",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "brandColor": "#1f333b",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Autarco"
+  },
+  "description": {
+    "en": "Bend your solar energy to Homey's will."
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Roy Brondgeest",
+    "email": "info@pulsive.nl"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Autarco Inverter"
+      },
+      "class": "solarpanel",
+      "capabilities": [
+        "measure_power",
+        "meter_power"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "pair": [
+        {
+          "id": "login"
+        },
+        {
+          "id": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "template": "list_devices"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/autarco-inverter/assets/images/small.png",
+        "large": "/drivers/autarco-inverter/assets/images/large.png",
+        "xlarge": "/drivers/autarco-inverter/assets/images/autarco-inverter-xlarge.png"
+      },
+      "id": "autarco-inverter"
+    }
+  ]
+}
